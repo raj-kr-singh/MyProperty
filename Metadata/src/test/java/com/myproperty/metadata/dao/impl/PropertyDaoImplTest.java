@@ -5,6 +5,7 @@ import com.myproperty.metadata.model.Property;
 import com.myproperty.metadata.type.PropertyFieldDto;
 import com.myproperty.metadata.type.PropertyObjectField;
 import com.myproperty.metadata.xml.PropertyObjectFieldConverter;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,9 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
+@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:com/myproperty/metadata/config/metadata-spring.xml")
+@ContextConfiguration("classpath:Metadata-servlet.xml")
 public class PropertyDaoImplTest {
 
 	@SuppressWarnings("SpringJavaAutowiringInspection")
