@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface PropertyDao {
 
-	public void saveProperty(Property property);
+	void saveProperty(Property property);
 
-	public Property getProperty(long propertyId);
+	List<String> getTopLevelProperty();
+
+	Property getProperty(long propertyId);
 }
