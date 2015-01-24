@@ -1,0 +1,15 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+	<title>Top Level Properties</title>
+</head>
+<body>
+
+<%
+
+
+%>
+
+
+</body>
+</html>
