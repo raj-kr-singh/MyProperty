@@ -12,7 +12,7 @@ import java.util.Set;
 public class Property implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "property")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "property")
 	@JoinColumn(name = "PROPERTY_ID")
 	private Set<PropertyField> propertyFieldSet = new HashSet<PropertyField>();
 
@@ -69,7 +69,4 @@ public class Property implements Serializable {
 		this.propertyFieldSet = propertyFieldSet;
 	}
 
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
 }

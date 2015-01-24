@@ -8,7 +8,7 @@ public interface PropertyDao {
 
 	void saveProperty(Property property);
 
-	List<String> getTopLevelProperty();
+	List<Property> getTopLevelProperty();
 
 	Property getProperty(long propertyId);
 }
