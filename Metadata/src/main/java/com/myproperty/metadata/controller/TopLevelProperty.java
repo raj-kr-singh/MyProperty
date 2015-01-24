@@ -17,15 +17,24 @@ public class TopLevelProperty {
 	@Autowired
 	PropertyDao propertyDao;
 
-	@RequestMapping("/topLevelProperty")
+	@RequestMapping("/topProperties")
 	@ResponseBody
-	public ModelAndView getTopLevelPropertyNames() {
+	public ModelAndView getTopLevelProperties() {
 
-		ModelAndView modelAndView = new ModelAndView("topProperty");
-		final List<Property> topLevelProperty = propertyDao.getTopLevelProperty();
-		modelAndView.addObject("properties", topLevelProperty);
+		ModelAndView modelAndView = new ModelAndView("topProperties");
+		final List<Property> topProperties = propertyDao.getTopLevelProperties();
+		modelAndView.addObject("properties", topProperties);
 		return modelAndView;
 	}
 
+	@RequestMapping("/properties")
+	@ResponseBody
+	public ModelAndView getAllProperties() {
+
+		ModelAndView modelAndView = new ModelAndView("properties");
+		final List<Property> properties = propertyDao.getAllProperties();
+		modelAndView.addObject("properties", properties);
+		return modelAndView;
+	}
 
 }

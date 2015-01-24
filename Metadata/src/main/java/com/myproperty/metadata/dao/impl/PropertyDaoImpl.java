@@ -4,9 +4,7 @@ import com.myproperty.metadata.dao.PropertyDao;
 import com.myproperty.metadata.model.Property;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -37,15 +35,27 @@ public class PropertyDaoImpl extends HibernateDaoSupport implements PropertyDao 
 	}
 
 	@Override
-	public List<Property> getTopLevelProperty() {
+	public List<Property> getTopLevelProperties() {
 
 		Criteria criteria = getHibernateTemplate().getSessionFactory().getCurrentSession().createCriteria(Property.class);
-		criteria.setProjection(Projections.property("name"));
 		criteria.add(Restrictions.eq("parentId", 0L));
 		try {
 			return criteria.list();
-		}catch (Exception exception) {
-			logger.error("Exception while getting Top Level Property", exception);
+		} catch (Exception exception) {
+			logger.error("Exception while getting Top Level Properties", exception);
+		}
+
+		return null;
+	}
+
+	@Override
+	public List<Property> getAllProperties() {
+
+		Criteria criteria = getHibernateTemplate().getSessionFactory().getCurrentSession().createCriteria(Property.class);
+		try {
+			return criteria.list();
+		} catch (Exception exception) {
+			logger.error("Exception while getting All Properties", exception);
 		}
 
 		return null;
