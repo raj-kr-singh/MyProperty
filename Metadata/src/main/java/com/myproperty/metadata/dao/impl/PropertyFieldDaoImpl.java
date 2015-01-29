@@ -8,6 +8,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.List;
 
 @Repository("propertyFieldDao")
@@ -23,12 +24,12 @@ public class PropertyFieldDaoImpl extends HibernateDaoSupport implements Propert
 	}
 
 	@Override
-	public void savePropertyField(PropertyField property) {
-		getHibernateTemplate().getSessionFactory().getCurrentSession().save(property);
+	public void savePropertyField(Collection<PropertyField> propertyFieldCollection) {
+		getHibernateTemplate().getSessionFactory().getCurrentSession().save(propertyFieldCollection);
 	}
 
 	@Override
 	public List<PropertyField> getPropertyField(String propertyId) {
-		return getHibernateTemplate().find("from Property where propertyId = " + propertyId);
+		return getHibernateTemplate().find("from Property where id = " + propertyId);
 	}
 }

@@ -1,20 +1,20 @@
 package com.myproperty.metadata.model;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "PROPERTY",uniqueConstraints = @UniqueConstraint(columnNames = "PROPERTY_ID"))
+@Table(name = "PROPERTY")
 public class Property implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "property")
-	@JoinColumn(name = "PROPERTY_ID")
-	private Set<PropertyField> propertyFieldSet = new HashSet<PropertyField>();
+
+	@OneToMany
+	@JoinTable(name = "PROPERTY_PROPERTY_FIELD", joinColumns = @JoinColumn(name = "PROPERTY_ID"), inverseJoinColumns = @JoinColumn(name = "FIELD_ID"))
+	private Collection<PropertyField> propertyFieldSet = new HashSet();
 
 	@Id
 	@Column(name = "PROPERTY_ID", unique = true)
@@ -61,11 +61,11 @@ public class Property implements Serializable {
 		this.parentId = parentId;
 	}
 
-	public Set<PropertyField> getPropertyFieldSet() {
+	public Collection<PropertyField> getPropertyFieldSet() {
 		return propertyFieldSet;
 	}
 
-	public void setPropertyFieldSet(Set<PropertyField> propertyFieldSet) {
+	public void setPropertyFieldSet(Collection<PropertyField> propertyFieldSet) {
 		this.propertyFieldSet = propertyFieldSet;
 	}
 

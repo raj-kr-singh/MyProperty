@@ -2,12 +2,13 @@ package com.myproperty.metadata.dao;
 
 import com.myproperty.metadata.model.PropertyField;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface PropertyFieldDao {
 
-	public void savePropertyField(PropertyField property);
+	void savePropertyField(Collection<PropertyField> propertyFieldCollection);
 
-	public List<PropertyField> getPropertyField(String propertyId);
+	List<PropertyField> getPropertyField(String propertyId);
 
 }
