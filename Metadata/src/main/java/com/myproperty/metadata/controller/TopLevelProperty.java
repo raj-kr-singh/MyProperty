@@ -18,7 +18,7 @@ public class TopLevelProperty {
 	@Autowired
 	PropertyDao propertyDao;
 
-	@RequestMapping("/topProperties")
+	@RequestMapping(value = "/topProperties")
 	@ResponseBody
 	public ModelAndView getTopLevelProperties() {
 

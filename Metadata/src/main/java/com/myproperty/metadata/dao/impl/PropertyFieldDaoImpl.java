@@ -24,8 +24,8 @@ public class PropertyFieldDaoImpl extends HibernateDaoSupport implements Propert
 	}
 
 	@Override
-	public void savePropertyField(Collection<PropertyField> propertyFieldCollection) {
-		getHibernateTemplate().getSessionFactory().getCurrentSession().save(propertyFieldCollection);
+	public void savePropertyField(PropertyField propertyField) {
+		getHibernateTemplate().getSessionFactory().getCurrentSession().save(propertyField);
 	}
 
 	@Override

@@ -63,7 +63,6 @@ public class CreatePropertyObjects {
 			logger.error("Error getting Resources", exception);
 		}
 
-
 		for (final Resource resource : resources) {
 			PropertyObjectConverter propertyObjectConverter = null;
 			try {
@@ -79,9 +78,16 @@ public class CreatePropertyObjects {
 			property = (Property) ObjectConverter.getCopiedTarget(propertyObjectDto, property);
 
 			propertyDao.saveProperty(property);
-			propertyFieldDao.savePropertyField(propertyObjectFieldMap.get(property.getId()));
-			property.setPropertyFieldSet(propertyObjectFieldMap.get(property.getId()));
 
+			if (propertyObjectFieldMap.get(property.getId()) == null || propertyObjectFieldMap.get(property.getId()).size() == 0 ) {
+				continue;
+			}
+
+			for (PropertyField propertyField : propertyObjectFieldMap.get(property.getId() )) {
+				propertyField.setProperty(property);
+				propertyFieldDao.savePropertyField(propertyField);
+
+			}
 		}
 
 		return propertyObjectMap;

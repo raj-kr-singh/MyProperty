@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "PROPERTY_FIELD", uniqueConstraints = {@UniqueConstraint(columnNames = {"FIELD_ID", "COLUMN_NAME"})})
+@Table(name = "PROPERTY_FIELD", uniqueConstraints = {@UniqueConstraint(columnNames = {"FIELD_ID", "COLUMN_NAME", "PROPERTY_ID"})})
 public class PropertyField implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -14,6 +14,10 @@ public class PropertyField implements Serializable {
 	@Id
 	@Column(name = "FIELD_ID", unique = true)
 	private long id;
+
+	@ManyToOne
+	@JoinColumn(name = "PROPERTY_ID")
+	private Property property;
 
 	@Column(name = "MANDATORY", nullable = false)
 	private boolean mandatory;
@@ -69,6 +73,14 @@ public class PropertyField implements Serializable {
 
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
+	}
+
+	public Property getProperty() {
+		return property;
+	}
+
+	public void setProperty(Property property) {
+		this.property = property;
 	}
 
 }

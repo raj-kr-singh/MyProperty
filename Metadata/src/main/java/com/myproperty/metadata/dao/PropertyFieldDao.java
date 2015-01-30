@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface PropertyFieldDao {
 
-	void savePropertyField(Collection<PropertyField> propertyFieldCollection);
+	void savePropertyField(PropertyField propertyField);
 
 	List<PropertyField> getPropertyField(String propertyId);
 

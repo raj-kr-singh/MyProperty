@@ -12,8 +12,7 @@ public class Property implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@OneToMany
-	@JoinTable(name = "PROPERTY_PROPERTY_FIELD", joinColumns = @JoinColumn(name = "PROPERTY_ID"), inverseJoinColumns = @JoinColumn(name = "FIELD_ID"))
+	@OneToMany(mappedBy = "property")
 	private Collection<PropertyField> propertyFieldSet = new HashSet();
 
 	@Id
