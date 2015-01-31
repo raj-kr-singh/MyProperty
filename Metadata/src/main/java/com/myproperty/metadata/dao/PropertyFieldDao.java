@@ -9,6 +9,6 @@ public interface PropertyFieldDao {
 
 	void savePropertyField(PropertyField propertyField);
 
-	List<PropertyField> getPropertyField(String propertyId);
+	List<PropertyField> getPropertyField(Long propertyId);
 
 }

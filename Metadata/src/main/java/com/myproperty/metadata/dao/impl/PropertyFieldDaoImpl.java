@@ -29,7 +29,7 @@ public class PropertyFieldDaoImpl extends HibernateDaoSupport implements Propert
 	}
 
 	@Override
-	public List<PropertyField> getPropertyField(String propertyId) {
-		return getHibernateTemplate().find("from Property where id = " + propertyId);
+	public List<PropertyField> getPropertyField(Long propertyId) {
+		return getHibernateTemplate().find("from PropertyField where property = " + propertyId);
 	}
 }
